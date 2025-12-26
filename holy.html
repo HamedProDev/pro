@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Ali Abdaal - Doctor turned Entrepreneur, YouTuber, and Author">
+  <title>Holly Flavien</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-light: #eff6ff;
+      --text-color: #1f2937;
+      --text-light: #6b7280;
+      --text-lighter: #9ca3af;
+      --background-color: #ffffff;
+      --border-color: #e5e7eb;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s ease;
+      --container-width: 1200px;
+      --border-radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+    header {
+      padding: 24px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 15px;
+      border-radius: 6px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-color);
+      background-color: var(--primary-light);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 20px;
+      background-color: var(--border-color);
+      margin: 0 4px;
+    }
+
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+
+    /* MAIN CONTENT AREA - Home Page Specific */
+    #home-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .home-page {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 80px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      flex: 1;
+    }
+
+    .home-content {
+      flex: 1;
+      max-width: 620px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-light);
+      color: var(--primary-color);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+    }
+
+    .home-content h1 {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .home-content h1 span {
+      color: var(--primary-color);
+    }
+
+    .home-content p {
+      font-size: 20px;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      max-width: 540px;
+    }
+
+    .highlight {
+      color: var(--text-color);
+      font-weight: 600;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid var(--primary-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: #f9fafb;
+      border-color: var(--text-lighter);
+    }
+
+    /* Home Image - Improved for mobile */
+    .home-image {
+      flex: 0 0 auto;
+      position: relative;
+      width: 280px;
+      height: 280px;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 12px solid white;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 2;
+    }
+
+    .decoration-circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      top: -20px;
+      right: -20px;
+      z-index: 1;
+    }
+
+    /* OTHER PAGES CONTENT */
+    .other-page {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .page-header {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* CONTENT PAGES */
+    .content-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 5%;
+      flex: 1;
+      width: 100%;
+    }
+
+    .page-content-inner {
+      font-size: 18px;
+      color: var(--text-light);
+    }
+
+    .page-content-inner p {
+      margin-bottom: 24px;
+    }
+
+    /* Book Page */
+    .book-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+      align-items: start;
+    }
+
+    .book-cover {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .book-info h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: var(--text-color);
+    }
+
+    /* Resources Grid */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .resource-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 32px;
+      transition: var(--transition);
+    }
+
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--primary-light);
+    }
+
+    .resource-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      font-size: 20px;
+    }
+
+    .resource-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--text-color);
+    }
+
+    .resource-card p {
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    /* Social Links - Home page only */
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+    }
+
+    .social-link:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+      border-color: var(--primary-color);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 60px 5% 40px;
+      color: var(--text-lighter);
+      border-top: 1px solid var(--border-color);
+      margin-top: auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* RESPONSIVE DESIGN - Improved mobile image */
+    @media (max-width: 1024px) {
+      .home-page {
+        flex-direction: column;
+        text-align: center;
+        gap: 60px;
+      }
+
+      .home-content {
+        max-width: 100%;
+        order: 1;
+      }
+
+      .home-image {
+        width: 320px;
+        height: 320px;
+        order: 2;
+        margin: 0 auto 30px;
+      }
+
+      .decoration-circle {
+        top: -15px;
+        right: -15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-divider {
+        display: none;
+      }
+
+      .nav-link {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-color);
+        width: 100%;
+      }
+
+      .nav-link:last-child {
+        border-bottom: none;
+      }
+
+      .home-content h1 {
+        font-size: 40px;
+      }
+
+      .home-content p {
+        font-size: 18px;
+      }
+
+      /* Improved mobile image sizing and positioning */
+      .home-image {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      
+
+     
+      .book-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        font-size: 32px;
+      }
+
+      .content-page {
+        padding: 60px 5%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .home-content h1 {
+        font-size: 36px;
+      }
+
+      .home-content p {
+        font-size: 16px;
+      }
+
+      .btn {
+        padding: 14px 24px;
+        font-size: 15px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      /* Further improved mobile image positioning */
+      .home-image {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto 30px;
+      }
+
+
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .content-page {
+        padding: 40px 5%;
+      }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 360px) {
+      .home-image {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 25px;
+      }
+      
+      .home-content h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <a href="#" class="logo" onclick="showPage('home'); return false;">
+      Holly Flavien<span class="logo-dot"></span>
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <nav class="nav-links">
+      <a href="#" class="nav-link active" onclick="showPage('home'); return false;">Home</a>
+      <a href="#" class="nav-link" onclick="showPage('book'); return false;">My Book</a>
+      <a href="#" class="nav-link" onclick="showPage('resources'); return false;">Free Resources</a>
+      <a href="#" class="nav-link" onclick="showPage('academy'); return false;">YouTube Academy</a>
+      <a href="#" class="nav-link" onclick="showPage('productivity'); return false;">LifeOS Productivity System</a>
+    </nav>
+  </header>
+
+  <!-- HOME PAGE CONTENT (Only shows on Home page) -->
+  <div id="home-content" class="page-content">
+    <div class="home-page">
+      <div class="home-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>Holly Flavien, A student in E.S MUKINGI</span>
+        </div>
+        
+        <h1>Hello Friends <span>👋</span></h1>
+        
+        <p>
+          I'm <span class="highlight">Holly</span>. A professional student who loves Networking and <strong>Is talented</strong>.
+        </p>
+        
+        <div class="cta-buttons">
+          <a href="#" class="btn" onclick="showPage('book'); return false;">
+            <i class="fas fa-book"></i> Learn About My Book
+          </a>
+          <a href="#" class="btn btn-secondary" onclick="showPage('resources'); return false;">
+            <i class="fas fa-gift"></i> Get Free Resources
+          </a>
+        </div>
+        
+        <div class="social-links">
+          <a href="https://youtube.com/@ahirwaflavien?si=G3MeCxwcc25A0mFO" class="social-link" aria-label="YouTube" target="_blank">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://x.com/AhirwaF22299" class="social-link" aria-label="Twitter" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/ahirwahollyflavien?igsh=MjF6aG56cW82YnFq" class="social-link" aria-label="Instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ahirwa-holly-flavien-ab0241312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" aria-label="LinkedIn" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      <div class="home-image">
+        <img src="60506cf0-cc9b-4e06-b041-7a7b77a46796 (1).jpg" alt="Holly Flavien" class="profile-img" style="border: 10px solid #3b83f6b9; ">
+      </div>
+    </div>
+  </div>
+
+  <!-- OTHER PAGES CONTENT (Separate from Home) -->
+  <div id="other-pages" class="other-page">
+    <!-- MY BOOK PAGE -->
+    <div id="book-content" class="content-page" style="display: none;">
+      <h2 class="page-header">My Book</h2>
+      <div class="page-content-inner">
+        <p><strong>Feel-Good Productivity</strong> is a New York Times bestseller that redefines how we think about productivity. It's not about working harder, but about working happier.</p>
+        
+        <div class="book-grid">
+          <div class="book-info">
+            <h3>Feel-Good Productivity</h3>
+            <p>In this groundbreaking book, I share the science-backed methods to be productive without burning out. The book challenges traditional productivity advice and offers a more sustainable, joyful approach to getting things done.</p>
+            <p>Through research and personal experience, I've discovered that the most productive people aren't those who grind the hardest, but those who find ways to make work feel good.</p>
+            <a href="#" class="btn" style="margin-top: 20px;">
+              <i class="fas fa-shopping-cart"></i> Get the Book
+            </a>
+          </div>
+          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Feel-Good Productivity Book Cover" class="book-cover">
+        </div>
+      </div>
+    </div>
+
+    <!-- FREE RESOURCES PAGE -->
+    <div id="resources-content" class="content-page" style="display: none;">
+      <h2 class="page-header">Free Resources</h2>
+      <div class="page-content-inner">
+        <p>I believe in sharing knowledge freely. Here are some resources I've created to help you on your productivity journey.</p>
+        
+        <div class="resources-grid">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <h3>Productivity Templates</h3>
+            <p>Notion, Trello, and Google Sheets templates to organize your work and life.</p>
+            <a href="#" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px;">Download</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <h3>Video Editing Guide</h3>
+            <p>My complete guide to editing YouTube videos efficiently.</p>
+            <a href="#" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px;">Get Guide</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Study Techniques</h3>
+            <p>Evidence-based study methods that actually work for medical students and beyond.</p>
+            <a href="#" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUTUBE ACADEMY PAGE -->
+    <div id="academy-content" class="content-page" style="display: none;">
+      <h2 class="page-header">YouTube Academy</h2>
+      <div class="page-content-inner">
+        <p>Learn how to grow a successful YouTube channel from scratch. My YouTube Academy provides step-by-step guidance on content creation, audience growth, and monetization.</p>
+        
+        <p>The academy covers everything from equipment recommendations to advanced YouTube algorithm strategies. Whether you're just starting or looking to scale, you'll find actionable advice.</p>
+        
+        <div class="resources-grid" style="margin-top: 40px;">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <h3>Equipment Setup</h3>
+            <p>Camera, lighting, and audio recommendations for every budget.</p>
+          </div>
+          
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3>Growth Strategies</h3>
+            <p>Proven methods to grow your audience and increase engagement.</p>
+          </div>
+          
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <h3>Monetization</h3>
+            <p>Multiple revenue streams to turn your passion into a business.</p>
+          </div>
+        </div>
+        
+        <a href="https://youtube.com/@ahirwaflavien?si=G3MeCxwcc25A0mFO" class="btn" style="margin-top: 40px;" target="_blank">
+          <i class="fab fa-youtube"></i> Explore YouTube Academy
+        </a>
+      </div>
+    </div>
+
+    <!-- PRODUCTIVITY SYSTEM PAGE -->
+    <div id="productivity-content" class="content-page" style="display: none;">
+      <h2 class="page-header">LifeOS Productivity System</h2>
+      <div class="page-content-inner">
+        <p>LifeOS is my personal productivity system that combines tools, habits, and mindsets to create a balanced, effective approach to work and life.</p>
+        
+        <p>This system has evolved over years of experimentation and is designed to be adaptable to different personalities and work styles. It's not about rigid rules, but about creating a system that works for you.</p>
+        
+        <div class="resources-grid" style="margin-top: 40px;">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3>Task Management</h3>
+            <p>How to capture, organize, and complete tasks without overwhelm.</p>
+          </div>
+          
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3>Time Blocking</h3>
+            <p>Schedule your ideal week for maximum productivity and balance.</p>
+          </div>
+          
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Mindset Tools</h3>
+            <p>Cognitive techniques to maintain motivation and avoid burnout.</p>
+          </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 30px; background: var(--primary-light); border-radius: 12px;">
+          <h3 style="margin-bottom: 16px; color: var(--primary-color);">System Principles</h3>
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 10px; padding-left: 24px; position: relative;">
+              <i class="fas fa-check" style="position: absolute; left: 0; color: var(--primary-color);"></i>
+              Focus on energy management, not just time management
+            </li>
+            <li style="margin-bottom: 10px; padding-left: 24px; position: relative;">
+              <i class="fas fa-check" style="position: absolute; left: 0; color: var(--primary-color);"></i>
+              Design systems that make good decisions automatic
+            </li>
+            <li style="margin-bottom: 10px; padding-left: 24px; position: relative;">
+              <i class="fas fa-check" style="position: absolute; left: 0; color: var(--primary-color);"></i>
+              Prioritize rest and recovery as much as work
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home'); return false;">Home</a>
+      <a href="#" onclick="showPage('book'); return false;">Book</a>
+      <a href="#" onclick="showPage('resources'); return false;">Resources</a>
+      <a href="#" onclick="showPage('academy'); return false;">YouTube Academy</a>
+      <a href="#" onclick="showPage('productivity'); return false;">Productivity System</a>
+    </div>
+    
+    <p>© <span id="current-year">2025</span>  Holly Flavien. All rights reserved.</p>
+    <p style="margin-top: 10px; font-size: 14px; color: var(--text-lighter);">Made by HamedPRO - for Holly Flavien</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Check URL hash on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      const hash = window.location.hash.substring(1); // Remove the # symbol
+      
+      // If there's a hash in the URL, show that page
+      if (hash && hash !== 'home') {
+        showPage(hash);
+      } else {
+        // Default page is Home
+        showPage('home');
+      }
+    });
+    
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+      
+      const menuIcon = document.querySelector('.menu-toggle i');
+      if (navLinks.classList.contains('active')) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    }
+    
+    function showPage(pageId) {
+      // Update URL hash
+      window.history.pushState(null, null, '#' + pageId);
+      
+      // Close mobile menu if open
+      const navLinks = document.querySelector('.nav-links');
+      const menuIcon = document.querySelector('.menu-toggle i');
+      if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+      
+      // Hide all pages and show only the selected one
+      if (pageId === 'home') {
+        // Show Home page, hide other pages container
+        document.getElementById('home-content').style.display = 'flex';
+        document.getElementById('other-pages').style.display = 'none';
+        
+        // Hide all other page contents
+        document.querySelectorAll('#other-pages .content-page').forEach(page => {
+          page.style.display = 'none';
+        });
+      } else {
+        // Hide Home page, show other pages container
+        document.getElementById('home-content').style.display = 'none';
+        document.getElementById('other-pages').style.display = 'flex';
+        
+        // Hide all other page contents first
+        document.querySelectorAll('#other-pages .content-page').forEach(page => {
+          page.style.display = 'none';
+        });
+        
+        // Show the selected page
+        const pageElement = document.getElementById(pageId + '-content');
+        if (pageElement) {
+          pageElement.style.display = 'block';
+        }
+      }
+      
+      // Update active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        // Simple matching logic for active state
+        const linkText = link.textContent.toLowerCase().trim();
+        if (
+          (pageId === 'home' && linkText.includes('home')) ||
+          (pageId === 'book' && linkText.includes('book')) ||
+          (pageId === 'resources' && linkText.includes('resources')) ||
+          (pageId === 'academy' && linkText.includes('academy')) ||
+          (pageId === 'productivity' && linkText.includes('productivity'))
+        ) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Scroll to top on page change (except home page which gets special treatment)
+      if (pageId === 'home') {
+        // For home page, scroll to a comfortable position
+        setTimeout(() => {
+          window.scrollTo({ 
+            top: window.innerHeight * 0.4, 
+            behavior: 'smooth' 
+          });
+        }, 100);
+      } else {
+        // For other pages, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const navLinks = document.querySelector('.nav-links');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      if (navLinks.classList.contains('active') && 
+          !navLinks.contains(e.target) && 
+          !menuToggle.contains(e.target)) {
+        navLinks.classList.remove('active');
+        document.querySelector('.menu-toggle i').classList.remove('fa-times');
+        document.querySelector('.menu-toggle i').classList.add('fa-bars');
+      }
+    });
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function() {
+      const hash = window.location.hash.substring(1);
+      if (hash && hash !== 'home') {
+        showPage(hash);
+      } else {
+        // Default to Home page
+        showPage('home');
+      }
+    });
+  </script>
+
+</body>
+</html>

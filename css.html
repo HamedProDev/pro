@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QURAN MASTER • The Ultimate Divine Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-secondary: #F4E4A6;
+            --gold-dark: #B8860B;
+            --deep-blue: #0A1A2F;
+            --navy: #1A2B4A;
+            --light-navy: #2A3B5A;
+            --cream: #F8F5E6;
+            --ivory: #FFFEF5;
+            --arabic-gold: #C9B037;
+            --shadow-glow: 0 0 30px rgba(212, 175, 55, 0.2);
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: radial-gradient(ellipse at center, var(--deep-blue) 0%, #050914 100%);
+            color: var(--cream);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(10, 26, 47, 0.1) 0%, transparent 50%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,50 Q50,10 80,50 Q50,90 20,50" fill="none" stroke="%23D4AF37" stroke-width="0.2" opacity="0.1"/></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            line-height: 3.2;
+            text-align: right;
+            direction: rtl;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .english-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--gold-secondary);
+            font-weight: 400;
+        }
+
+        /* Cosmic Navigation */
+        .cosmic-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 90px;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 26, 47, 0.95) 0%, rgba(26, 43, 74, 0.98) 100%);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .cosmic-nav.collapsed {
+            transform: translateX(-90px);
+        }
+
+        .nav-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, var(--gold-primary), transparent, var(--gold-dark));
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 10s linear infinite;
+        }
+
+        .nav-item {
+            width: 60px;
+            height: 60px;
+            margin: 1rem 0;
+            background: rgba(26, 43, 74, 0.5);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px) scale(1.1);
+            border-color: var(--gold-primary);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-item i {
+            font-size: 1.5rem;
+            color: var(--gold-secondary);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-item.active i {
+            color: var(--deep-blue);
+        }
+
+        .nav-label {
+            position: absolute;
+            left: 70px;
+            background: rgba(10, 26, 47, 0.95);
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: var(--transition-smooth);
+            pointer-events: none;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .nav-item:hover .nav-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .nav-toggle {
+            position: absolute;
+            right: -20px;
+            top: 2rem;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-toggle:hover {
+            transform: scale(1.1) rotate(180deg);
+        }
+
+        /* Divine Header */
+        .divine-header {
+            margin-left: 90px;
+            padding: 2rem 3rem;
+            background: linear-gradient(180deg, rgba(10, 26, 47, 0.9) 0%, transparent 100%);
+            backdrop-filter: blur(5px);
+            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cosmic-search {
+            flex: 1;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .cosmic-search input {
+            width: 100%;
+            padding: 1.2rem 1.2rem 1.2rem 4.5rem;
+            background: rgba(26, 43, 74, 0.7);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            font-size: 1.2rem;
+            color: var(--gold-secondary);
+            transition: var(--transition-smooth);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .cosmic-search input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+            background: rgba(26, 43, 74, 0.9);
+        }
+
+        .cosmic-search i {
+            position: absolute;
+            left: 1.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold-primary);
+            font-size: 1.4rem;
+        }
+
+        .divine-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .action-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(26, 43, 74, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .action-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px) rotate(10deg);
+            border-color: var(--gold-primary);
+        }
+
+        .action-btn i {
+            font-size: 1.3rem;
+            color: var(--gold-secondary);
+        }
+
+        .theme-toggle {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+        }
+
+        .theme-toggle i {
+            color: var(--deep-blue);
+        }
+
+        /* Celestial Content */
+        .celestial-content {
+            margin-left: 90px;
+            padding: 3rem;
+            min-height: calc(100vh - 120px);
+            position: relative;
+        }
+
+        .page {
+            display: none;
+            animation: celestialFadeIn 0.8s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Cosmic Reader */
+        .surah-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .surah-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+
+        .surah-name-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 4.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+            position: relative;
+            display: inline-block;
+        }
+
+        .surah-name-arabic::before {
+            content: '﷽';
+            position: absolute;
+            top: -3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .surah-name-english {
+            font-size: 1.8rem;
+            color: var(--gold-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .surah-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            color: var(--gold-secondary);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .verse-container {
+            background: linear-gradient(145deg, rgba(26, 43, 74, 0.7), rgba(10, 26, 47, 0.9));
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verse-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+
+        .verse-container:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .verse-number {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .verse-arabic {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .verse-translation {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .verse-translation::before {
+            content: 'Translation';
+            position: absolute;
+            top: -12px;
+            left: 0;
+            background: var(--deep-blue);
+            padding: 0 1rem;
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .verse-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .verse-action-btn {
+            padding: 0.8rem 1.8rem;
+            background: rgba(26, 43, 74, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            color: var(--gold-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+
+        .verse-action-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+            border-color: var(--gold-primary);
+        }
+
+        .verse-action-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Celestial Grid */
+        .celestial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .grid-item {
+            background: linear-gradient(145deg, rgba(26, 43, 74, 0.7), rgba(10, 26, 47, 0.9));
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.03) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .grid-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .grid-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .grid-icon i {
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+        }
+
+        .grid-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .grid-desc {
+            text-align: center;
+            color: var(--gold-secondary);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Audio Visualization */
+        .audio-visualizer {
+            position: fixed;
+            bottom: 0;
+            left: 90px;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(0deg, rgba(10, 26, 47, 0.95) 0%, transparent 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 900;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .audio-visualizer.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .visualizer-bars {
+            display: flex;
+            gap: 4px;
+            height: 100px;
+            align-items: flex-end;
+        }
+
+        .bar {
+            width: 6px;
+            background: linear-gradient(to top, var(--gold-primary), var(--gold-dark));
+            border-radius: 3px;
+            animation: audioWave 1.5s ease-in-out infinite;
+        }
+
+        @keyframes audioWave {
+            0%, 100% { height: 20px; }
+            50% { height: 80px; }
+        }
+
+        .bar:nth-child(2) { animation-delay: 0.1s; }
+        .bar:nth-child(3) { animation-delay: 0.2s; }
+        .bar:nth-child(4) { animation-delay: 0.3s; }
+        .bar:nth-child(5) { animation-delay: 0.4s; }
+        .bar:nth-child(6) { animation-delay: 0.5s; }
+        .bar:nth-child(7) { animation-delay: 0.6s; }
+        .bar:nth-child(8) { animation-delay: 0.7s; }
+
+        /* Cosmic Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes celestialFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .cosmic-nav {
+                transform: translateX(-90px);
+            }
+            .cosmic-nav.active {
+                transform: translateX(0);
+            }
+            .divine-header, .celestial-content {
+                margin-left: 0;
+            }
+            .nav-toggle {
+                display: none;
+            }
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .divine-header {
+                padding: 1.5rem;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .celestial-content {
+                padding: 1.5rem;
+            }
+            .surah-name-arabic {
+                font-size: 3rem;
+            }
+            .celestial-grid {
+                grid-template-columns: 1fr;
+            }
+            .verse-actions {
+                justify-content: center;
+            }
+        }
+
+        .mobile-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            transition: var(--transition-bounce);
+        }
+
+        .mobile-toggle:hover {
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .mobile-toggle i {
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+        }
+
+        /* Settings Page */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .setting-card {
+            background: linear-gradient(145deg, rgba(26, 43, 74, 0.7), rgba(10, 26, 47, 0.9));
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .setting-title {
+            color: var(--gold-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .setting-option {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .option-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: var(--gold-secondary);
+        }
+
+        .cosmic-slider {
+            width: 100%;
+            height: 6px;
+            background: rgba(26, 43, 74, 0.5);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .cosmic-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .theme-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .theme-option {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            background: rgba(26, 43, 74, 0.5);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: 1px solid transparent;
+        }
+
+        .theme-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .theme-option.active {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--gold-primary);
+        }
+
+        .theme-preview {
+            width: 100%;
+            height: 60px;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .gold-theme { background: linear-gradient(135deg, var(--deep-blue), var(--navy)); }
+        .dark-theme { background: linear-gradient(135deg, #000000, #1a1a1a); }
+        .sepia-theme { background: linear-gradient(135deg, #3d2c2c, #5d4a4a); }
+
+        /* Surah Navigator */
+        .surah-navigator {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 26, 47, 0.95);
+            border-radius: 20px;
+            padding: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-glow);
+            z-index: 800;
+        }
+
+        .navigator-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 43, 74, 0.5);
+            border-radius: 10px;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            color: var(--gold-secondary);
+            font-size: 0.9rem;
+        }
+
+        .navigator-item:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: scale(1.1);
+        }
+
+        .navigator-item.active {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: var(--deep-blue);
+            font-weight: bold;
+        }
+
+        /* Progress Ring */
+        .progress-ring {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            z-index: 800;
+        }
+
+        .ring-circle {
+            fill: none;
+            stroke: var(--gold-primary);
+            stroke-width: 4;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .ring-center {
+            fill: var(--deep-blue);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .ring-center:hover {
+            fill: rgba(212, 175, 55, 0.1);
+        }
+
+        .ring-center i {
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+        }
+
+        /* Quran Calligraphy */
+        .calligraphy-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .calligraphy-text {
+            position: absolute;
+            font-family: 'Amiri', serif;
+            font-size: 20rem;
+            color: var(--gold-primary);
+            opacity: 0.1;
+            transform: rotate(-15deg);
+            white-space: nowrap;
+        }
+
+        /* Page Transitions */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--deep-blue), var(--navy));
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-transition.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .transition-text {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            color: var(--gold-primary);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--deep-blue), #000);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        .loading-text {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            color: var(--gold-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .loading-subtext {
+            color: var(--gold-secondary);
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            animation: bounce 1.4s ease-in-out infinite;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-text">﷽</div>
+        <div class="loading-text">QURAN MASTER</div>
+        <div class="loading-subtext">Entering the Divine Realm</div>
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Page Transition -->
+    <div class="page-transition" id="pageTransition">
+        <div class="transition-text" id="transitionText">﷽</div>
+    </div>
+
+    <!-- Cosmic Navigation -->
+    <div class="cosmic-nav" id="cosmicNav">
+        <div class="nav-logo">
+            <i class="fas fa-quran"></i>
+        </div>
+        
+        <div class="nav-item active" data-page="reader">
+            <i class="fas fa-book-open"></i>
+            <div class="nav-label">Cosmic Reader</div>
+        </div>
+        
+        <div class="nav-item" data-page="explore">
+            <i class="fas fa-compass"></i>
+            <div class="nav-label">Explore Quran</div>
+        </div>
+        
+        <div class="nav-item" data-page="search">
+            <i class="fas fa-search"></i>
+            <div class="nav-label">Divine Search</div>
+        </div>
+        
+        <div class="nav-item" data-page="bookmarks">
+            <i class="fas fa-bookmark"></i>
+            <div class="nav-label">Sacred Bookmarks</div>
+        </div>
+        
+        <div class="nav-item" data-page="audio">
+            <i class="fas fa-music"></i>
+            <div class="nav-label">Celestial Audio</div>
+        </div>
+        
+        <div class="nav-item" data-page="tafsir">
+            <i class="fas fa-graduation-cap"></i>
+            <div class="nav-label">Wisdom Tafsir</div>
+        </div>
+        
+        <div class="nav-item" data-page="settings">
+            <i class="fas fa-cog"></i>
+            <div class="nav-label">Divine Settings</div>
+        </div>
+        
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+    </div>
+
+    <!-- Divine Header -->
+    <div class="divine-header">
+        <div class="header-content">
+            <div class="cosmic-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="divineSearch" placeholder="Search the Divine Words...">
+            </div>
+            
+            <div class="divine-actions">
+                <div class="action-btn" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="action-btn" id="audioToggle">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+                <div class="action-btn" id="fullscreenToggle">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <div class="action-btn user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celestial Content -->
+    <div class="celestial-content">
+        <!-- Cosmic Reader Page -->
+        <div class="page active" id="reader-page">
+            <div class="surah-header">
+                <div class="surah-name-arabic">سُورَةُ الْفَاتِحَة</div>
+                <div class="surah-name-english">Al-Fatihah • The Opening</div>
+                <div class="surah-info">
+                    <div class="info-item">
+                        <i class="fas fa-verse"></i>
+                        <span>7 Verses</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Meccan Revelation</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-star"></i>
+                        <span>The Essence</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="verse-container">
+                <div class="verse-number">1</div>
+                <div class="verse-arabic arabic-text">
+                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                </div>
+                <div class="verse-translation english-text">
+                    In the name of Allah, the Entirely Merciful, the Especially Merciful.
+                </div>
+                <div class="verse-actions">
+                    <button class="verse-action-btn">
+                        <i class="fas fa-bookmark"></i> Preserve
+                    </button>
+                    <button class="verse-action-btn">
+                        <i class="fas fa-lightbulb"></i> Reflect
+                    </button>
+                    <button class="verse-action-btn">
+                        <i class="fas fa-share-alt"></i> Share Light
+                    </button>
+                    <button class="verse-action-btn">
+                        <i class="fas fa-volume-up"></i> Listen Divine
+                    </button>
+                </div>
+            </div>
+            
+            <div class="verse-container">
+                <div class="verse-number">2</div>
+                <div class="verse-arabic arabic-text">
+                    الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+                </div>
+                <div class="verse-translation english-text">
+                    [All] praise is [due] to Allah, Lord of the worlds.
+                </div>
+                <div class="verse-actions">
+                    <button class="verse-action-btn">
+                        <i class="fas fa-bookmark"></i> Preserve
+                    </button>
+                    <button class="verse-action-btn">
+                        <i class="fas fa-lightbulb"></i> Reflect
+                    </button>
+                    <button class="verse-action-btn">
+                        <i class="fas fa-share-alt"></i> Share Light
+                    </button>
+                    <button class="verse-action-btn">
+                        <i class="fas fa-volume-up"></i> Listen Divine
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Explore Page -->
+        <div class="page" id="explore-page">
+            <div class="section-header">
+                <h2 class="surah-name-english" style="text-align: left;">Explore the Divine</h2>
+                <p class="english-text" style="opacity: 0.8; margin-top: 1rem;">Journey through the chapters of wisdom</p>
+            </div>
+            
+            <div class="celestial-grid">
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-star-and-crescent"></i>
+                    </div>
+                    <h3 class="grid-title">Short Surahs</h3>
+                    <p class="grid-desc">Begin your journey with powerful, shorter chapters filled with profound meaning.</p>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="grid-title">Thematic Study</h3>
+                    <p class="grid-desc">Explore verses by theme: Mercy, Patience, Faith, and Divine Wisdom.</p>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="grid-title">Revelation Order</h3>
+                    <p class="grid-desc">Experience the Quran as it was revealed chronologically to the Prophet (PBUH).</p>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="grid-title">Healing Verses</h3>
+                    <p class="grid-desc">Find solace in verses of healing, comfort, and spiritual remedy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div class="page" id="settings-page">
+            <div class="section-header">
+                <h2 class="surah-name-english" style="text-align: left;">Divine Settings</h2>
+                <p class="english-text" style="opacity: 0.8; margin-top: 1rem;">Customize your spiritual journey</p>
+            </div>
+            
+            <div class="settings-grid">
+                <div class="setting-card">
+                    <h3 class="setting-title">
+                        <i class="fas fa-palette"></i> Appearance
+                    </h3>
+                    
+                    <div class="setting-option">
+                        <div class="option-label">
+                            <span>Theme</span>
+                        </div>
+                        <div class="theme-options">
+                            <div class="theme-option active" data-theme="gold">
+                                <div class="theme-preview gold-theme"></div>
+                                <span>Divine Gold</span>
+                            </div>
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-preview dark-theme"></div>
+                                <span>Cosmic Night</span>
+                            </div>
+                            <div class="theme-option" data-theme="sepia">
+                                <div class="theme-preview sepia-theme"></div>
+                                <span>Ancient Scroll</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-option">
+                        <div class="option-label">
+                            <span>Arabic Font Size</span>
+                            <span id="arabicSizeValue">2.2rem</span>
+                        </div>
+                        <input type="range" min="16" max="32" value="22" class="cosmic-slider" id="arabicFontSlider">
+                    </div>
+                    
+                    <div class="setting-option">
+                        <div class="option-label">
+                            <span>Translation Font Size</span>
+                            <span id="translationSizeValue">1.3rem</span>
+                        </div>
+                        <input type="range" min="12" max="24" value="13" class="cosmic-slider" id="translationFontSlider">
+                    </div>
+                </div>
+                
+                <div class="setting-card">
+                    <h3 class="setting-title">
+                        <i class="fas fa-volume-up"></i> Audio
+                    </h3>
+                    
+                    <div class="setting-option">
+                        <div class="option-label">
+                            <span>Recitation Style</span>
+                        </div>
+                        <select class="cosmic-slider" style="width: 100%; padding: 0.8rem; background: rgba(26,43,74,0.5); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; color: var(--gold-secondary);">
+                            <option>Mishary Rashid (Melodic)</option>
+                            <option>Abdul Basit (Classical)</option>
+                            <option>Saad al-Ghamdi (Emotional)</option>
+                            <option>Husary (Tajweed)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-option">
+                        <div class="option-label">
+                            <span>Auto-play Next Verse</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Surah Navigator -->
+    <div class="surah-navigator">
+        <div class="navigator-item active">1</div>
+        <div class="navigator-item">2</div>
+        <div class="navigator-item">3</div>
+        <div class="navigator-item">4</div>
+        <div class="navigator-item">5</div>
+        <div class="navigator-item">...</div>
+        <div class="navigator-item">114</div>
+    </div>
+
+    <!-- Progress Ring -->
+    <div class="progress-ring">
+        <svg width="80" height="80">
+            <circle class="ring-circle" cx="40" cy="40" r="35" stroke-dasharray="220" stroke-dashoffset="110"></circle>
+        </svg>
+        <div class="ring-center">
+            <i class="fas fa-play"></i>
+        </div>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <div class="mobile-toggle" id="mobileToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Audio Visualizer -->
+    <div class="audio-visualizer" id="audioVisualizer">
+        <div class="visualizer-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Calligraphy Overlay -->
+    <div class="calligraphy-overlay">
+        <div class="calligraphy-text" style="top: 10%; left: 5%;">الله</div>
+        <div class="calligraphy-text" style="top: 30%; right: 5%;">الرحمن</div>
+        <div class="calligraphy-text" style="bottom: 20%; left: 10%;">الرحيم</div>
+    </div>
+
+    <script>
+        // Initialize loading screen
+        setTimeout(() => {
+            document.getElementById('loadingScreen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                createParticles();
+            }, 1000);
+        }, 2000);
+
+        // Create floating particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 20}s`;
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                particle.style.width = `${Math.random() * 3 + 1}px`;
+                particle.style.height = particle.style.width;
+                particles.appendChild(particle);
+            }
+        }
+
+        // DOM Elements
+        const cosmicNav = document.getElementById('cosmicNav');
+        const navToggle = document.getElementById('navToggle');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const themeToggle = document.getElementById('themeToggle');
+        const audioToggle = document.getElementById('audioToggle');
+        const fullscreenToggle = document.getElementById('fullscreenToggle');
+        const audioVisualizer = document.getElementById('audioVisualizer');
+        const navItems = document.querySelectorAll('.nav-item');
+        const pages = document.querySelectorAll('.page');
+        const pageTransition = document.getElementById('pageTransition');
+        const transitionText = document.getElementById('transitionText');
+        const arabicFontSlider = document.getElementById('arabicFontSlider');
+        const translationFontSlider = document.getElementById('translationFontSlider');
+        const arabicSizeValue = document.getElementById('arabicSizeValue');
+        const translationSizeValue = document.getElementById('translationSizeValue');
+        const themeOptions = document.querySelectorAll('.theme-option');
+        const navigatorItems = document.querySelectorAll('.navigator-item');
+
+        // Navigation toggle
+        navToggle.addEventListener('click', () => {
+            cosmicNav.classList.toggle('collapsed');
+            navToggle.innerHTML = cosmicNav.classList.contains('collapsed') 
+                ? '<i class="fas fa-chevron-right"></i>' 
+                : '<i class="fas fa-chevron-left"></i>';
+        });
+
+        // Mobile toggle
+        mobileToggle.addEventListener('click', () => {
+            cosmicNav.classList.toggle('active');
+        });
+
+        // Page transitions
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const pageId = item.getAttribute('data-page');
+                
+                // Update active nav item
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Show page transition
+                const pageNames = {
+                    'reader': 'Cosmic Reader',
+                    'explore': 'Explore Divine',
+                    'search': 'Divine Search',
+                    'bookmarks': 'Sacred Bookmarks',
+                    'audio': 'Celestial Audio',
+                    'tafsir': 'Wisdom Tafsir',
+                    'settings': 'Divine Settings'
+                };
+                
+                transitionText.textContent = pageNames[pageId];
+                pageTransition.classList.add('active');
+                
+                setTimeout(() => {
+                    // Hide current pages
+                    pages.forEach(page => page.classList.remove('active'));
+                    
+                    // Show selected page
+                    document.getElementById(`${pageId}-page`).classList.add('active');
+                    
+                    // Hide transition
+                    setTimeout(() => {
+                        pageTransition.classList.remove('active');
+                    }, 500);
+                }, 800);
+            });
+        });
+
+        // Theme toggle with multiple themes
+        let currentTheme = 'gold';
+        themeToggle.addEventListener('click', () => {
+            const themes = ['gold', 'dark', 'sepia'];
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextTheme = themes[(currentIndex + 1) % themes.length];
+            
+            setTheme(nextTheme);
+            updateThemeOptions(nextTheme);
+        });
+
+        function setTheme(theme) {
+            document.body.className = '';
+            if (theme !== 'gold') {
+                document.body.classList.add(`${theme}-theme`);
+            }
+            currentTheme = theme;
+            
+            // Update theme icon
+            const icons = {
+                'gold': 'fas fa-moon',
+                'dark': 'fas fa-sun',
+                'sepia': 'fas fa-scroll'
+            };
+            themeToggle.innerHTML = `<i class="${icons[theme]}"></i>`;
+        }
+
+        function updateThemeOptions(theme) {
+            themeOptions.forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-theme') === theme) {
+                    option.classList.add('active');
+                }
+            });
+        }
+
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const theme = option.getAttribute('data-theme');
+                setTheme(theme);
+                updateThemeOptions(theme);
+            });
+        });
+
+        // Audio toggle
+        let audioPlaying = false;
+        audioToggle.addEventListener('click', () => {
+            audioPlaying = !audioPlaying;
+            audioVisualizer.classList.toggle('active', audioPlaying);
+            audioToggle.innerHTML = audioPlaying 
+                ? '<i class="fas fa-volume-mute"></i>' 
+                : '<i class="fas fa-volume-up"></i>';
+            
+            // Animate the visualizer bars
+            if (audioPlaying) {
+                animateVisualizer();
+            }
+        });
+
+        function animateVisualizer() {
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach(bar => {
+                bar.style.animationPlayState = audioPlaying ? 'running' : 'paused';
+            });
+        }
+
+        // Fullscreen toggle
+        fullscreenToggle.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                fullscreenToggle.innerHTML = '<i class="fas fa-compress"></i>';
+            } else {
+                document.exitFullscreen();
+                fullscreenToggle.innerHTML = '<i class="fas fa-expand"></i>';
+            }
+        });
+
+        // Font size controls
+        arabicFontSlider.addEventListener('input', (e) => {
+            const size = e.target.value / 10;
+            document.querySelectorAll('.arabic-text').forEach(text => {
+                text.style.fontSize = `${size}rem`;
+            });
+            arabicSizeValue.textContent = `${size}rem`;
+        });
+
+        translationFontSlider.addEventListener('input', (e) => {
+            const size = e.target.value / 10;
+            document.querySelectorAll('.english-text').forEach(text => {
+                text.style.fontSize = `${size}rem`;
+            });
+            translationSizeValue.textContent = `${size}rem`;
+        });
+
+        // Verse actions
+        document.querySelectorAll('.verse-action-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const action = btn.querySelector('i').className;
+                
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.background = 'rgba(212, 175, 55, 0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                const rect = btn.getBoundingClientRect();
+                ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height)}px`;
+                ripple.style.left = `${rect.left + rect.width/2 - ripple.offsetWidth/2}px`;
+                ripple.style.top = `${rect.top + rect.height/2 - ripple.offsetHeight/2}px`;
+                
+                document.body.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+                
+                // Action feedback
+                const actions = {
+                    'fa-bookmark': 'Verse preserved in your sacred collection',
+                    'fa-lightbulb': 'Reflection saved to your spiritual journal',
+                    'fa-share-alt': 'Divine light shared with the world',
+                    'fa-volume-up': 'Celestial recitation initiated'
+                };
+                
+                for (const [icon, message] of Object.entries(actions)) {
+                    if (action.includes(icon)) {
+                        showNotification(message);
+                        break;
+                    }
+                }
+            });
+        });
+
+        // Navigator functionality
+        navigatorItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navigatorItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Smooth scroll to verse
+                const verseNumber = parseInt(item.textContent);
+                if (!isNaN(verseNumber)) {
+                    const verseContainer = document.querySelectorAll('.verse-container')[verseNumber - 1];
+                    if (verseContainer) {
+                        verseContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Highlight effect
+                        verseContainer.style.animation = 'none';
+                        setTimeout(() => {
+                            verseContainer.style.animation = 'highlight 2s ease';
+                        }, 10);
+                    }
+                }
+            });
+        });
+
+        // Progress ring interaction
+        const progressRing = document.querySelector('.progress-ring');
+        const ringCircle = document.querySelector('.ring-circle');
+        let progress = 0;
+        
+        progressRing.addEventListener('click', () => {
+            progress = (progress + 25) % 100;
+            const offset = 220 - (220 * progress) / 100;
+            ringCircle.style.strokeDashoffset = offset;
+            
+            // Toggle play/pause icon
+            const icon = progressRing.querySelector('i');
+            icon.className = progress > 0 ? 'fas fa-pause' : 'fas fa-play';
+        });
+
+        // Search functionality
+        const divineSearch = document.getElementById('divineSearch');
+        divineSearch.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && divineSearch.value.trim()) {
+                // Navigate to search page
+                navItems.forEach(nav => nav.classList.remove('active'));
+                document.querySelector('.nav-item[data-page="search"]').classList.add('active');
+                
+                // Trigger page transition
+                document.querySelector('.nav-item[data-page="search"]').click();
+                
+                // Show search results animation
+                setTimeout(() => {
+                    showNotification(`Searching for: "${divineSearch.value}"`);
+                }, 1500);
+            }
+        });
+
+        // Notification system
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 30px;
+                background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+                color: var(--deep-blue);
+                padding: 1rem 2rem;
+                border-radius: 12px;
+                box-shadow: var(--shadow-glow);
+                z-index: 10000;
+                transform: translateX(100%);
+                opacity: 0;
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                font-family: 'Cormorant Garamond', serif;
+                font-weight: 600;
+                white-space: nowrap;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+                notification.style.opacity = '1';
+            }, 10);
+            
+            // Animate out
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+
+        // Add highlight animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes highlight {
+                0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+                50% { box-shadow: 0 0 60px 20px rgba(212, 175, 55, 0.3); }
+                100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            }
+            
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 50px;
+                height: 24px;
+            }
+            
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(26, 43, 74, 0.5);
+                transition: .4s;
+                border-radius: 34px;
+                border: 1px solid rgba(212, 175, 55, 0.3);
+            }
+            
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                left: 4px;
+                bottom: 3px;
+                background-color: var(--gold-secondary);
+                transition: .4s;
+                border-radius: 50%;
+            }
+            
+            input:checked + .slider {
+                background-color: rgba(212, 175, 55, 0.3);
+            }
+            
+            input:checked + .slider:before {
+                transform: translateX(26px);
+                background-color: var(--gold-primary);
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Auto-update progress ring on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            const offset = 220 - (220 * scrolled) / 100;
+            ringCircle.style.strokeDashoffset = Math.max(0, Math.min(220, offset));
+        });
+
+        // Initialize with random progress
+        ringCircle.style.strokeDashoffset = 110;
+
+        // Add hover effects to all interactive elements
+        document.querySelectorAll('.verse-container, .grid-item, .setting-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.transform = 'translateY(-10px)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
